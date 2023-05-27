@@ -3,10 +3,7 @@ package com.driver.controllers;
 import com.driver.model.Airport;
 import com.driver.model.Flight;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class AirportRepository {
     private Map<String,Airport> AirportsData=new HashMap<>();
@@ -21,6 +18,18 @@ public class AirportRepository {
     }
 
     public List<Flight> getShortestDurationOfPossibleBetweenTwoCities() {
+        return new ArrayList<>(FlightData.values());
+    }
+
+    public List<Flight> getNumberOfPeopleOn() {
+        return new ArrayList<>(FlightData.values());
+    }
+
+    public Airport getAirport(String airportName) {
+        return AirportsData.get(airportName);
+    }
+
+    public List<Flight> getFilghts() {
         return new ArrayList<>(FlightData.values());
     }
 }

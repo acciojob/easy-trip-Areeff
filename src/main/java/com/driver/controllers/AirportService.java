@@ -6,6 +6,7 @@ import com.driver.model.Flight;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -48,5 +49,28 @@ public class AirportService {
            return  0;
        }
        return shortDuration;
+    }
+
+    public int getNumberOfPeopleOn(Date date, String airportName) {
+        List<Flight> flightList=airportRepository.getNumberOfPeopleOn();
+        Airport airport=airportRepository.getAirport(airportName);
+        City cityname=airport.getCity();
+        int count=0;
+        for(Flight flight:flightList){
+            if(flight.getFlightDate().equals(date)){
+                if(flight.getFromCity().equals(cityname)){
+                    count+=flight.getMaxCapacity();
+                }
+                if(flight.getToCity().equals(cityname)){
+                    count+=flight.getMaxCapacity();
+                }
+            }
+        }
+        return count;
+    }
+
+    public int calculateFare(Integer flightId) {
+        List<Flight> flightList=airportRepository.getFilghts();
+        return 0;
     }
 }
