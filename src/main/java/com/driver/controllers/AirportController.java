@@ -16,12 +16,13 @@ import java.util.Objects;
 
 @RestController
 public class AirportController {
+    AirportService airportService=new AirportService();
     @PostMapping("/add_airport")
     public String addAirport(@RequestBody Airport airport){
 
         //Simply add airport details to your database
         //Return a String message "SUCCESS"
-
+        airportService.addAirport(airport);
         return "SUCCESS";
     }
 
@@ -30,8 +31,8 @@ public class AirportController {
 
         //Largest airport is in terms of terminals. 3 terminal airport is larger than 2 terminal airport
         //Incase of a tie return the Lexicographically smallest airportName
-
-       return null;
+        String ans=airportService.getLargestAirportName();
+       return ans;
     }
 
     @GetMapping("/get-shortest-time-travel-between-cities")
@@ -39,7 +40,7 @@ public class AirportController {
 
         //Find the duration by finding the shortest flight that connects these 2 cities directly
         //If there is no direct flight between 2 cities return -1.
-
+       double time= airportService.getShortestDurationOfPossibleBetweenTwoCities(fromCity,toCity);
        return 0;
     }
 
